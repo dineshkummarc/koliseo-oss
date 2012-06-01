@@ -1,0 +1,66 @@
+.kcontainer {
+	font: normal 13px/1.5em "HelveticaNeue", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+	padding-bottom: 30px;
+	background: transparent url(/home/icoloma/workspace/koliseo/war/css-src/img/powered.png) no-repeat right bottom;
+	overflow: hidden;
+}
+.kbtn {
+  cursor: pointer;
+  padding: 5px 14px 6px;
+  padding-top: 8px \0/IE8+9;
+  font-size: 13px;
+  line-height: 19px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -ms-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  margin-left: 5px; /* especialmente por los botones .small incluidos con texto */
+  text-decoration: none;
+  float: right;
+  background-color: #5BB75B;
+  background-image: -moz-linear-gradient(top, #62C462, #51A351);
+  background-image: -ms-linear-gradient(top, #62C462, #51A351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62C462), to(#51A351));
+  background-image: -webkit-linear-gradient(top, #62C462, #51A351);
+  background-image: -o-linear-gradient(top, #62C462, #51A351);
+  background-image: linear-gradient(top, #62C462, #51A351);
+  background-repeat: repeat-x;
+  border-color: #51A351 #51A351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+.kbtn:hover {
+  background-position: 0 -15px;
+  text-decoration: none;
+  background-color: #51A351;
+}
+.kperformances {
+  list-style: none;
+  border-right: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  padding: 0;
+  margin: 0 0 10px;
+}
+.kperformance {
+  margin: 0;
+  border-top: 1px solid #DDD;
+  padding: 5px 10px;
+}
+.kaddr {
+  display: block;
+  font-size: 10px;
+  color: #aaa;
+}

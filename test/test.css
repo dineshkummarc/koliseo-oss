@@ -1,0 +1,18 @@
+body {
+	font: normal 13px/1.5em "HelveticaNeue", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+}
+input {
+  font: normal 13px/1.5em "HelveticaNeue", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+  outline: none;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: #444;
+  display: inline-block;
+  min-height: 18px;
+  background: #fff; 
+  margin: 0 5px 0 0;
+  vertical-align: middle;
+}
