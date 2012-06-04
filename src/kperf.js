@@ -19,7 +19,7 @@
 
 	/** extract the date from a ISO8601 dateTime */
 	extractDate = function(dateTimeStr) {
-		return /(.+)T/.exec(dateTimeStr)[1]
+		return (/(.+)T/).exec(dateTimeStr)[1];
 	},
 
 	/** Render the button to buy */
@@ -32,8 +32,7 @@
 		var 
 			html = '',
 			perfByDateAndVenue = {},
-			entriesCount = 0,
-			id
+			entriesCount = 0
 		;
 		$.each(performances, function(i, performance) {
 			id = extractDate(performance.dateTimeStr) + '-' + performance.venue.id;
@@ -41,7 +40,7 @@
 				perfByDateAndVenue[id] = performance;
 			} 
 		});
-		for (id in perfByDateAndVenue) {
+		for (var id in perfByDateAndVenue) {
 			if (perfByDateAndVenue.hasOwnProperty(id)) {
 				if (entriesCount++ >= options.maxEntries) {
 					break;
@@ -75,9 +74,8 @@
 
 		console.log(performances);
 		renderBuyButton();
-		$element.append('<a class="kseeother" href="' + options.showURL + '">&raquo; ' + options.res.seeOther + '</a>')
-	}
-	;
+		$element.append('<a class="kseeother" href="' + options.showURL + '">&raquo; ' + options.res.seeOther + '</a>');
+	};
 
 	/**
 		options.showId {String} the show ID
@@ -122,10 +120,10 @@
 		$element.on('click', '.kbtn', function(e) {
 			var $radio = $element.find('.kradio:checked');
 			if ($radio.length) {
-				window.location.href = options.showURL + "/performance?performance=" + $radio.val()
+				window.location.href = options.showURL + "/performance?performance=" + $radio.val();
 				return false;
 			}
 		});
-	}
+	};
 
 })(jQuery);
