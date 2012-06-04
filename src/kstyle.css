@@ -1,7 +1,5 @@
 .kcontainer {
 	font: normal 13px/1.5em "HelveticaNeue", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
-	padding-bottom: 30px;
-	background: transparent url(/home/icoloma/workspace/koliseo/war/css-src/img/powered.png) no-repeat right bottom;
 	overflow: hidden;
 }
 .kbtn {
@@ -40,6 +38,7 @@
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #fff;
+  clear: both;
 }
 .kbtn:hover {
   background-position: 0 -15px;
@@ -52,15 +51,54 @@
   border-left: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
   padding: 0;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 .kperformance {
   margin: 0;
   border-top: 1px solid #DDD;
   padding: 5px 10px;
 }
-.kaddr {
+.kvenue {
   display: block;
   font-size: 10px;
   color: #aaa;
+  line-height: 12px;
+  margin-top: 4px;
+}
+.kvenueaddr {
+  display: block;
+}
+.ktickets {
+  color: #bfbfbf;
+  display: inline-block;
+  margin-right: 10px;
+  min-width: 50px;
+  display: block;
+  padding-left: 11px;
+  background: transparent url(sprite.png) no-repeat 0 2px;
+  height: 12px;
+  line-height: 12px;
+}
+.ktickets.kscarce {
+  color: #f89406;
+  background-position: 0 -9px;
+}
+.ktickets.ksoldout {
+  color: #c43c35;
+  background-position: 0 -21px;
+}
+.ktickets.kplenty {
+  color: #46a546;
+}
+.kseeother {
+  font-size: 10px;
+  float: right;
+  margin: 0 0 3px;
+}
+.kbuttonbar {
+  background: transparent url(powered-compact.png) no-repeat left top;
+  overflow: hidden;
+}
+.kprice {
+  white-space: nowrap;
 }

@@ -16,13 +16,24 @@
 	<!-- Extracted from HTML5 boilerplate. Useful to work on a plane ;) -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   	<script>window.jQuery || document.write('<script src="../lib/jquery.js"><\/script>')</script>
+	<script src="../lib/moment.js"></script>
 	<script src="../src/kperf.js"></script>
 
 	<script>
 	var callback = function() {
 		$('.test-container').perfw({
 			showId: $('input[name=showId]').val(),
-			hostname: 'localhost:8888'
+			hostname: 'localhost:8888',
+			maxEntries: 5,
+			dateToString: function(parts) {
+				return moment(parts[1] + '-' + parts[2] + '-' + parts[3]).format('ddd, MMMM Do')
+			},
+			res: {
+				ticketsAvailable: 'de entradas disponibles',
+				seeOther: 'ver otras fechas',
+				buy: 'Comprar',
+				empty: 'No hay actuaciones disponibles'
+			}
 		});
 		return false;
 	}

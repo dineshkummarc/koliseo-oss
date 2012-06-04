@@ -14,67 +14,68 @@
 
 	/** Transform 0-1 into 0-100 */
 	toPercentage = function(value) {
-		return (value * 100).toFixed(2);
+		return +((value * 100).toFixed(0));
 	},
 
 	/** extract the date from a ISO8601 dateTime */
 	extractDate = function(dateTimeStr) {
 		return /(.+)T/.exec(dateTimeStr)[1]
 	},
-	
-	/** HTML for available tickets */
-	formatAvailable = function(json) {
-		var 
-			availableTickets = json.totalTickets - json.soldTickets,
-			pct = toPercentage(availableTickets / json.totalTickets);
-		json = $.extend({
-			availableTickets: availableTickets,
-			percentage: pct,
-			ticketsClass: +pct === 0? '' :
-				pct < 20? 'ksoldout' :
-				pct < 40? 'kscarce' :
-				'kplenty'
-		}, json);
-		return '<span class="ktickets ' + json.ticketsClass + '">' + json.availableTickets + '/' + json.totalTickets + ' (' + json.percentage + '%)</span>';
-	},
 
 	/** Render the button to buy */
 	renderBuyButton = function() {
-		$element.append('<a class="kbtn kprimary" href="http://' + options.hostname + '/shows/' + options.showId + '/performances">Buy tickets</a>');
+		$element.append('<div class="kbuttonbar"><a class="kbtn kprimary" href="' + options.showURL + '">' + options.res.buy + '</a></div>');
 	},
 	
 	/** Render the provided list of performances and the button to buy */
 	renderPerformances = function(performances) {
 		var 
 			html = '',
-			perfByDateAndVenue = {}
+			perfByDateAndVenue = {},
+			entriesCount = 0,
+			id
 		;
-		for (var i = 0; i < performances.length; i++) {
-			var 
-				performance = performances[i],
-				id = performance.venue.id + '-' + extractDate(performance.dateTimeStr)
-			;
+		$.each(performances, function(i, performance) {
+			id = extractDate(performance.dateTimeStr) + '-' + performance.venue.id;
 			if (!perfByDateAndVenue[id] || perfByDateAndVenue[id].minprice > performance.minprice) {
 				perfByDateAndVenue[id] = performance;
 			} 
-		}
-		for (var i in perfByDateAndVenue) {
-			if (perfByDateAndVenue.hasOwnProperty(i)) {
+		});
+		for (id in perfByDateAndVenue) {
+			if (perfByDateAndVenue.hasOwnProperty(id)) {
+				if (entriesCount++ >= options.maxEntries) {
+					break;
+				}
+				var 
+					performance = perfByDateAndVenue[id],
+					availableTickets = performance.totalTickets - performance.soldTickets,
+					parts = /(\d+)-(\d+)-(\d+)/.exec(performance.dateTimeStr),
+					pct = toPercentage(availableTickets / performance.totalTickets),
+					ticketsClass = pct === 0? '' :
+						pct < 20? 'ksoldout' :
+						pct < 40? 'kscarce' :
+						'kplenty'
+					;
 				html += 
-					'<li class="kperformance">' +
-						'<input type="radio" class="kradio" name="performance" value="' + performance.id + '">' + 
-						performance.venue.name + ' ' + performance.minprice + performance.currency + ' ' + i +
-						formatAvailable(performance) + 
-						'<span class="kaddr">' + performance.venue.address + '</span>' +
+					'<li class="kperformance" title="' + pct + '% ' + options.res.ticketsAvailable + '">' +
+						'<input type="radio" class="kradio" name="kperformance" value="' + performance.id + '">' + 
+							options.dateToString(parts) + ' <b class="kprice">(' + performance.minPrice + ' ' + performance.currency + ')</b>' + 
+							'<span class="ktickets ' + ticketsClass + '" >' + 
+								availableTickets + '/' + performance.totalTickets  +
+							'</span>' + 
+						'<span class="kvenue"><span class="kvenuename">' + performance.venue.name + '</span> <span class="kvenueaddr">' + performance.venue.address + '</span></span>' +
 					'</li>'
 					;
 
 			}
 		}
+		if (!performances.length)
+			html = '<li class="kempty kperformance">' + options.res.empty + '</li>';
 		$element.html('<ul class="kperformances">' + html + '</ul>');
 
 		console.log(performances);
 		renderBuyButton();
+		$element.append('<a class="kseeother" href="' + options.showURL + '">&raquo; ' + options.res.seeOther + '</a>')
 	}
 	;
 
@@ -87,13 +88,24 @@
 		if (!opt.showId)
 			throw new Error("options.showId is required");
 		options = $.extend({
-			hostname: 'www.koliseo.com'
+			hostname: 'www.koliseo.com',
+			dateToString: function(date) {
+				return parts[1] + '-' + parts[2] + '-' + parts[3];
+			},
+			maxEntries: 5,
+			res: $.extend({
+				ticketsAvailable: 'tickets available',
+				seeOther: 'see other dates',
+				buy: 'Buy tickets',
+				empty: 'No performances found'
+			}, opt? opt.res : null)
 		}, opt);
+		options.showURL = 'http://' + options.hostname + '/shows/' + options.showId;
 
 		$element.addClass('kcontainer');
 		if ($.support.cors) {
 			$.ajax({
-				url: 'http://' + options.hostname + '/shows/' + options.showId + '/performances',
+				url: options.showURL + '/performances',
 				dataType: 'json',
 				type: 'GET',
 				success: function(performances) {
@@ -107,6 +119,13 @@
 		} else {
 			renderBuyButton();
 		}
+		$element.on('click', '.kbtn', function(e) {
+			var $radio = $element.find('.kradio:checked');
+			if ($radio.length) {
+				window.location.href = options.showURL + "/performance?performance=" + $radio.val()
+				return false;
+			}
+		});
 	}
 
 })(jQuery);
