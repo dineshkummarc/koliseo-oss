@@ -43,10 +43,21 @@
 		$('#tc2').kperf({
 			showId: showId
 		});
+
 		return false;
 	}
 	$('#showForm').submit(callback);
 	callback();
+
+	/** /
+	// uncomment to see all the ticket styles in the page
+	window.setTimeout(function() {
+		if ($('.ktickets').length > 2) {
+			$($('.ktickets')[0]).removeClass('kplenty').addClass('kscarce');
+			$($('.ktickets')[1]).removeClass('kplenty').addClass('ksoldout');
+		}
+	}, 1000)
+	/**/
 	</script>
 </body>
 </html>

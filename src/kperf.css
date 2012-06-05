@@ -75,17 +75,17 @@
   min-width: 50px;
   display: block;
   padding-left: 13px;
-  background: transparent url(sprite.png) no-repeat 0 2px;
+  background: transparent url(sprite.png) no-repeat 0 0px;
   height: 12px;
   line-height: 12px;
 }
 .ktickets.kscarce {
   color: #f89406;
-  background-position: 0 -9px;
+  background-position: 0 -13px;
 }
 .ktickets.ksoldout {
   color: #c43c35;
-  background-position: 0 -21px;
+  background-position: 0 -27px;
 }
 .ktickets.kplenty {
   color: #46a546;
