@@ -102,3 +102,7 @@
 .kprice {
   white-space: nowrap;
 }
+.kloading {
+  min-height: 20px;
+  background: transparent url(loading.gif) no-repeat 50% 50%;
+}

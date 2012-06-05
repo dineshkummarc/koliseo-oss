@@ -8,12 +8,13 @@
 var compressor = require('node-minify');
 
 new compressor.minify({
+	type: 'yui',
+	fileIn: 'src/kperf.css',
+	fileOut: 'src/kperf.min.css'
+});
+
+new compressor.minify({
 	type: 'gcc',
 	fileIn: 'src/kperf.js',
-	fileOut: 'src/kperf.min.js',
-	options: [ 
-		//'--create_source_map', 'war/js/' + filename.replace('.js', '.map'), 
-		//'--debug',
-		//'--compilation_level', 'ADVANCED_OPTIMIZATIONS'
-		]
+	fileOut: 'src/kperf.min.js'
 });
