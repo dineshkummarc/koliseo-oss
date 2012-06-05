@@ -1,8 +1,18 @@
 <html>
 <head>
 	<title>PerfW Test</title>
+	<meta charset="utf-8">
+	<!--
 	<link rel="stylesheet" href="../src/kstyle.css">
+	-->
 	<link rel="stylesheet" href="test.css">
+	<style>
+	.test-container {
+		width: 200px;
+		float: left;
+		margin: 0 5px;
+	}
+	</style>
 </head>
 <body>
 	<form id="showForm">
@@ -11,7 +21,8 @@
 		<input type="submit" value="refresh">
 	</form>
 
-	<aside class="test-container" style="width: 200px"> </aside>
+	<aside id="tc1" class="test-container"></aside>
+	<aside id="tc2" class="test-container" data-max-entries="2" data-locale="es" data-date-format="Ddd d* de Mm*" data-insert-css="false"></aside>
 
 	<!-- Extracted from HTML5 boilerplate. Useful to work on a plane ;) -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -21,19 +32,18 @@
 
 	<script>
 	var callback = function() {
-		$('.test-container').perfw({
-			showId: $('input[name=showId]').val(),
-			hostname: 'localhost:8888',
-			maxEntries: 5,
-			dateToString: function(parts) {
-				return moment(parts[1] + '-' + parts[2] + '-' + parts[3]).format('ddd, MMMM Do')
-			},
-			res: {
-				ticketsAvailable: 'de entradas disponibles',
-				seeOther: 'ver otras fechas',
-				buy: 'Comprar',
-				empty: 'No hay actuaciones disponibles'
-			}
+		var showId = $('input[name=showId]').val();
+
+		// create using jQuery syntax
+		$('#tc1').kperf({
+			showId: showId,
+			hostname: 'localhost:8888'
+		});
+
+		// create using data-* attributes
+		$('#tc2').kperf({
+			showId: showId,
+			hostname: 'localhost:8888'
 		});
 		return false;
 	}
