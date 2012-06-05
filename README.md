@@ -8,7 +8,7 @@ KPerf
 
 KPerf displays a list of scheduled performances for a show. 
 
-<img src="screenshot.png" alt="Screenshot of KPerf in action">
+<img src="https://github.com/icoloma/koliseo-widgets/raw/master/screenshot.png" alt="Screenshot of KPerf in action">
 
 To use, add the following at the end of your web page (before the ending <code>&lt;/body></code> tag):
 
