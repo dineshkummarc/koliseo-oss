@@ -17,7 +17,7 @@
 <body>
 	<form id="showForm">
 		<label for="showId">Show ID:</label>
-		<input type="text" name="showId" placeholder="Introduce the show ID" value="D"> <!-- xNE -->
+		<input type="text" name="showId" placeholder="Introduce the show ID" value="xNE">
 		<input type="submit" value="refresh">
 	</form>
 
@@ -36,14 +36,12 @@
 
 		// create using jQuery syntax
 		$('#tc1').kperf({
-			showId: showId,
-			hostname: 'localhost:8888'
+			showId: showId
 		});
 
 		// create using data-* attributes
 		$('#tc2').kperf({
-			showId: showId,
-			hostname: 'localhost:8888'
+			showId: showId
 		});
 		return false;
 	}
