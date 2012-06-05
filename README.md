@@ -18,7 +18,7 @@ To use, add the following at the end of your web page (before the ending <code>&
 <script src="http://www.koliseo.com/w/kperf/1.0/kperf.min.js"></script>
 ```
 
-Now add the following at the position where you want the widget to appear:
+Now put this where you want the widget to appear:
 
 ```html
 <aside class="kcontainer" data-show-id="Dfe"></aside>
