@@ -6,7 +6,11 @@ A collection of widgets that use the Koliseo API.
 KPerf
 =====
 
-KPerf displays the scheduled performances for the specified show. To use, just add the following at the end of your web page (before the ending <code>&lt;/body></code> tag):
+KPerf displays a list of scheduled performances for a show. 
+
+<img src="screenshot.png" alt="Screenshot of KPerf in action">
+
+To use, add the following at the end of your web page (before the ending <code>&lt;/body></code> tag):
 
 ```html
 <!-- KPerf requires jQuery. If your web page already has jQuery present, you may omit this first line. -->
@@ -14,7 +18,7 @@ KPerf displays the scheduled performances for the specified show. To use, just a
 <script src="http://www.koliseo.com/w/kperf/1.0/kperf.min.js"></script>
 ```
 
-KPerf will display the widget inside any container with <code>class=kcontainer</code>. For example:
+KPerf will display the widget inside any DOM element with <code>class=kcontainer</code>. For example:
 
 ```html
 <aside class="kcontainer" data-show-id="Dfe"></aside>
@@ -23,15 +27,15 @@ KPerf will display the widget inside any container with <code>class=kcontainer</
 Parameters
 ==========
 
-KPerf can receive any parameters as <code>data-*</code> attributes in the container DOM element. The supported attributes are:
+KPerf can receive parameters as <code>data-*</code> attributes of the container DOM element:
 
-* **showId** (string) the show ID, extracted from the show URL <code>/shows/{showId}/{showName}</code>. This attribute is required.
+* **showId** (string) the show ID, extracted from the Koliseo URL <code>/shows/{showId}/{showName}</code>. This attribute is required.
 * **locale** (string) the two-letter acronym of the locale to use. The default is the browser locale or <code>en</code> if none.
-* **dateFormat** (string) the date format to use. The default is locale-specific.
+* **dateFormat** (string) the date format. The default is locale-specific.
 * **maxEntries** (number) the maximum number of entries to display. The default is 5.
-* **insertCss** (boolean) By default kperf will insert automatically kperf.css if it is not already present. Set this to false if you plan to provide your own styles somewhere else.
+* **insertCss** (boolean) By default <code>kperf.css</code> will be inserted to <code>&lt;head></code> if it is not already present. Set this to false if you plan to provide your own styles somewhere else.
 
-Only showId is required. An example using all parameters:
+Only <code>showId</code> is required. An example using all parameters:
 
 ```html
 <div class="kcontainer" 
@@ -46,7 +50,7 @@ Only showId is required. An example using all parameters:
 Using KPerf as a jQuery plugin
 ==============================
 
-KPerf is a jQuery plugin that can also be initialized using standard JavaScript syntax:
+KPerf is also a jQuery plugin that can also be initialized using standard JavaScript syntax:
 
 ```javascript
 $('#my-container').kperf({
@@ -59,7 +63,7 @@ $('#my-container').kperf({
 Locales
 =======
 
-The widget locale is automatically set to the browser locale, unless otherwise specified using the <code>locale</code> option. The widget supports the same set of locales as the Koliseo website, and will default to <code>en</code> if a locale is not supported.
+The widget is automatically set to use the browser locale, unless otherwise specified using the <code>locale</code> option. The widget supports the same set of locales as the Koliseo website, and will default to <code>en</code> if a locale is not supported.
 
 You can add new locales by setting a global Koliseo.resources variable before including <code>kperf.js</code>:
 
