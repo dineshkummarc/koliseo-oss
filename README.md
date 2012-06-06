@@ -18,10 +18,10 @@ To use, add the following at the end of your web page (before the ending <code>&
 <script src="http://www.koliseo.com/w/kperf/1.0/kperf.min.js"></script>
 ```
 
-KPerf will display the widget inside any DOM element with <code>class=kcontainer</code>. For example:
+Now put this where you want the widget to appear:
 
 ```html
-<aside class="kcontainer" data-show-id="Dfe"></aside>
+<div class="kcontainer" data-show-id="Dfe"></div>
 ```
 
 Parameters
@@ -85,4 +85,4 @@ Koliseo.resources = {
 License
 =======
 
-These widgets are released under the (http://en.wikipedia.org/wiki/MIT_License)(MIT) license. You may modify these widgets and include them in your own commercial, non-open-source projects as long as the copyright header is left intact.
+These widgets are released under the (http://en.wikipedia.org/wiki/MIT_License)(MIT) license. You may modify these widgets and include them in your own commercial, closed-source projects as long as the copyright header is left intact.
