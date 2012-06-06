@@ -21,7 +21,7 @@ To use, add the following at the end of your web page (before the ending <code>&
 Now put this where you want the widget to appear:
 
 ```html
-<aside class="kcontainer" data-show-id="Dfe"></aside>
+<div class="kcontainer" data-show-id="Dfe"></div>
 ```
 
 Parameters
