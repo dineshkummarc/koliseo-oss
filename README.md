@@ -85,4 +85,4 @@ Koliseo.resources = {
 License
 =======
 
-These widgets are released under the (http://en.wikipedia.org/wiki/MIT_License)(MIT) license. You may modify these widgets and include them in your own commercial, non-open-source projects as long as the copyright header is left intact.
+These widgets are released under the (http://en.wikipedia.org/wiki/MIT_License)(MIT) license. You may modify these widgets and include them in your own commercial, closed-source projects as long as the copyright header is left intact.
