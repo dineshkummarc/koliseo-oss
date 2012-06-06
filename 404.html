@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Error 404 - Koliseo Help</title>
+  <link rel="stylesheet" href="http://en.koliseo.com/css/bare.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 8]><script>window.location.href='http://en.koliseo.com/browser-not-supported.html'</script><![endif]-->
+  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+<header class="topbar" data-dropdown="dropdown">
+  <div class="topbar-inner">
+    <div class="container_16">
+      <a href="http://koliseo.com" rel="index home"><img alt="Koliseo" class="klogo" src="http://en.koliseo.com/css/img/koliseo_top.png"></a>
+      <ul class="nav top-nav">
+        <li><a href="/">Help site</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div role="main" class="container_16">
+<div class="grid_16 module">
+	<div class="grid_4">
+		<img src="http://en.koliseo.com/css/img/error404.jpg" class="error-image error-image-404">
+	</div>
+	<div class="grid_11">
+		<h1>Error 404</h1>
+		<h2 class="page-header">Something has gone missing</h2>
+		<p>Sorry, the page you were looking for could not be found. No help here. 
+    <p>Maybe you could start again from <a href="/">the beginning</a>.
+	</div>
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		var K = {
+			randomPlaceHolder: function(placeholder, data) {
+				for (var i in data) {
+					if (data.hasOwnProperty(i)) {
+						var arr = data[i].split(',');
+						var value = arr[Math.floor(Math.random() * arr.length)];
+						placeholder = placeholder.replace('{{' + i + '}}', value)
+					}
+				}
+				return placeholder; 
+			}
+		};
+		var res = {
+			titleTemplate: '{{who}} {{what}} your web page!',
+			titleTemplateWhos: 'Goblins,Ninjas,Zombies,Aliens,Chuck Norris,Klingons,Orcs,The imperial troops',
+			titleTemplateWhats: 'abducted,stole,got,kidnapped,pirated,removed,took',
+			exampleSearchPlaceholder: 'E.g.: {{what}} in {{where}}',
+			exampleSearchWhats: 'Movies,Theater,Soccer,Transformers',
+			exampleSearchWheres: 'Madrid,London,Viena'
+		}
+		$.fn.searchPlaceHolder = function() {
+			var placeholder = K.randomPlaceHolder(res.exampleSearchPlaceholder, { 
+				what: res.exampleSearchWhats, 
+				where: res.exampleSearchWheres 
+			});
+			this.attr('placeholder', placeholder);
+		};
+
+		// search placeholder
+		$('.shows-search input[name=q]').searchPlaceHolder();
+		
+		// image title
+		var title = K.randomPlaceHolder(res.titleTemplate, { 
+			who: res.titleTemplateWhos, 
+			what: res.titleTemplateWhats 
+		});
+
+		$('.error-image').attr({ title: title, alt: title});
+	})
+</script>
+
+<footer class="pfooter">
+  <nav class="container_16">
+    <a href="http://play.google.com/store/apps/details?id=com.koliseo.android" title="Get it on Google Play" class="fright">
+        <img alt="Get it on Google Play" src="http://en.koliseo.com/css/img/android.png">
+    </a>
+    <ul class="grid_10 alpha omega">
+      <li class="pfooter-li">
+        <strong class="section-name">We are Koliseo</strong> 
+        <a class="pfooter-a" href="/about-us">About us</a> &middot; 
+        <a class="pfooter-a" href="http://en.koliseo.com/legal">Legal</a> &middot; 
+        <a class="pfooter-a" href="/">Help</a>
+      </li>
+      <li class="pfooter-li">
+        <strong class="section-name">Social</strong> 
+        <a class="pfooter-a" href="http://blog.koliseo.com" target="_blank">Blog</a> &middot; 
+        <a class="pfooter-a" href="http://www.facebook.com/pages/Koliseo/154989271219595" target="_blank">Facebook</a> &middot; 
+        <a class="pfooter-a" href="http://twitter.com/koliseo_es/" target="_blank">Twitter</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
+<footer class="printfooter">
+  <hr>
+  <img alt="Koliseo" class="printlogo" src="http://en.koliseo.com/css/img/koliseo_print.png">
+  <span>Koliseo is the platform where you decide when and how to sell tickets for your events</span>
+</footer>
+  
+  <script>var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-9562146-1'],['_setDomainName','koliseo.com'],['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+</body>
+</html>

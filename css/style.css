@@ -1,0 +1,21 @@
+.top-nav {
+	margin-left: 20px !important;
+}
+.helpcontents {
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.65);
+	padding: 20px 10px;
+}
+
+.help-item-selected {
+  background: #CCDEEF;
+}
+.help-img {
+	max-width: 100%;
+	border: 1px solid #DDD;
+	-webkit-box-shadow: 1px 1px 3px #ddd;
+	-moz-box-shadow: 1px 1px 3px #ddd;
+	box-shadow: 1px 1px 3px #ddd;
+	vertical-align: top;
+	margin-right: 5px;
+}

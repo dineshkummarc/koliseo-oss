@@ -1,0 +1,88 @@
+---
+sidebar_cats:
+- shows
+- venues
+#- tickets
+- other
+---
+
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{ page.title }} - Koliseo Help</title>
+  <link rel="stylesheet" href="http://en.koliseo.com/css/bare.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 8]><script>window.location.href='http://en.koliseo.com/browser-not-supported.html'</script><![endif]-->
+  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+
+  <header class="topbar" data-dropdown="dropdown">
+    <div class="topbar-inner">
+      <div class="container_16">
+        <a href="http://koliseo.com" rel="index home"><img alt="Koliseo" class="klogo" src="http://en.koliseo.com/css/img/koliseo_top.png"></a>
+        <ul class="nav top-nav">
+          <li><a href="/">Help site</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+    
+  <div role="main" class="container_16 helpcontents">
+    <section class="grid_11">
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </section>
+    <ul>
+    <aside class="grid_4 arrow_box">
+      {% for cat in (page.sidebar_cats) %}
+      <li class="js-topic">
+        <h3>{{ cat | replace:'_',' ' | capitalize }}</h3>
+        <ul class="js-guides">
+          {% for post in site.posts reversed %}{% if post.categories contains cat %}
+            {% if page.title == post.title %}
+              <li class="disable"><span>{{ page.title }}</span></li>
+            {% else %}
+              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endif %}
+          {% endif %}{% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </aside>
+  </ul>
+
+  </div>
+
+<footer class="pfooter">
+  <nav class="container_16">
+    <a href="http://play.google.com/store/apps/details?id=com.koliseo.android" title="Get it on Google Play" class="fright">
+        <img alt="Get it on Google Play" src="http://en.koliseo.com/css/img/android.png">
+    </a>
+    <ul class="grid_10 alpha omega">
+      <li class="pfooter-li">
+        <strong class="section-name">We are Koliseo</strong> 
+        <a class="pfooter-a" href="/about-us">About us</a> &middot; 
+        <a class="pfooter-a" href="http://en.koliseo.com/legal">Legal</a> &middot; 
+        <a class="pfooter-a" href="/">Help</a>
+      </li>
+      <li class="pfooter-li">
+        <strong class="section-name">Social</strong> 
+        <a class="pfooter-a" href="http://blog.koliseo.com" target="_blank">Blog</a> &middot; 
+        <a class="pfooter-a" href="http://www.facebook.com/pages/Koliseo/154989271219595" target="_blank">Facebook</a> &middot; 
+        <a class="pfooter-a" href="http://twitter.com/koliseo_es/" target="_blank">Twitter</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
+<footer class="printfooter">
+  <hr>
+  <img alt="Koliseo" class="printlogo" src="http://en.koliseo.com/css/img/koliseo_print.png">
+  <span>Koliseo is the platform where you decide when and how to sell tickets for your events</span>
+</footer>
+  
+  <script>var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-9562146-1'],['_setDomainName','koliseo.com'],['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+</body>
+</html>
